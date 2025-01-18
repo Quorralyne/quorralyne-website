@@ -1,0 +1,110 @@
+.card {
+  background-color: white;
+  border: 1px solid #eee;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.minimalCard {
+  composes: card;
+}
+
+.minimalCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.minimalCard:hover .cardAccent {
+  width: 100%;
+}
+
+.minimalCard:hover .cardOverlay {
+  opacity: 1;
+}
+
+.glassCard {
+  composes: card;
+  backdrop-filter: blur(12px);
+}
+
+.glassCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.glassCard:hover .glassOverlay {
+  opacity: 1;
+}
+
+.materialCard {
+  composes: card;
+}
+
+.materialCard:hover .materialOverlay {
+  opacity: 1;
+}
+
+.materialCard:hover .materialAccent {
+  transform: scaleX(1);
+}
+
+.materialCard:hover .materialIcon {
+  transform: translateY(0) rotate(0deg);
+  opacity: 1;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cardOverlay {
+  composes: overlay;
+}
+
+.glassOverlay {
+  composes: overlay;
+}
+
+.materialOverlay {
+  composes: overlay;
+}
+
+.accent {
+  transition: all 0.3s ease;
+}
+
+.cardAccent {
+  composes: accent;
+  height: 3px;
+  width: 40%;
+}
+
+.materialAccent {
+  composes: accent;
+  height: 4px;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.content {
+  padding: 1rem;
+}

@@ -1,28 +1,28 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import '@mantine/core/styles.css';
+import './globals.css';
+import { MantineClientProvider } from '@/components/providers/MantineClientProvider';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Heather Downing - Staying Curious',
   description: 'Senior software developer and international speaker specializing in backend microservices, voice app development, and mobile cross-platform apps.',
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <MantineClientProvider>
+          {children}
+        </MantineClientProvider>
       </body>
     </html>
-  )
+  );
 }

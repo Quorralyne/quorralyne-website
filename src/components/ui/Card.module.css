@@ -1,0 +1,53 @@
+.card {
+  background-color: white;
+  border: 1px solid #eee;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.accent {
+  height: 3px;
+  width: 40%;
+  transition: width 0.3s ease;
+}
+
+.card:hover .accent {
+  width: 100%;
+}
+
+.content {
+  padding: 1rem;
+}

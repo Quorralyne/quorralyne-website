@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { TextInput, Textarea, Button, Stack, Title } from '@mantine/core'
 
 export default function ContactForm() {
   const [name, setName] = useState('')
@@ -19,36 +20,48 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
+      <Stack>
+        <Title order={2} c="#34A853" mb="lg">
+          Send a Message
+        </Title>
+        <TextInput
+          label="Name"
+          placeholder="Your name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          size="md"
         />
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
+        <TextInput
+          label="Email"
+          placeholder="your.email@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          size="md"
         />
-      </div>
-      <div>
-        <label htmlFor="message">Message:</label>
-        <textarea
-          id="message"
+        <Textarea
+          label="Message"
+          placeholder="Type your message here..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           required
-        ></textarea>
-      </div>
-      <button type="submit">Send</button>
+          minRows={4}
+          size="md"
+        />
+        <Button 
+          type="submit" 
+          size="md"
+          style={{ 
+            backgroundColor: '#34A853',
+            '&:hover': {
+              backgroundColor: '#2d9147'
+            }
+          }}
+        >
+          Send Message
+        </Button>
+      </Stack>
     </form>
   )
 }

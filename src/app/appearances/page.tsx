@@ -1,63 +1,108 @@
+"use client";
+
 import Image from "next/image";
-import heroImage from "../../public/images/heather-appearances.jpg";
+import { Grid, Paper, Title, Text, Group } from "@mantine/core";
+import { Section, Navigation, Footer } from "@/components/ui";
+import Hero from "@/components/Hero";
+import heroImage from "@/public/images/heather-appearances.jpg";
+import { appearances, type Appearance } from "@/data/appearances";
+import { GB, SE, DK, US, AU, CH, ES, BE, NO, NL, LT, AQ } from "country-flag-icons/react/3x2";
+
+const FlagComponent = ({ country }: { country: string }) => {
+  switch (country) {
+    case "GB":
+      return <GB className="flag-icon" />;
+    case "SE":
+      return <SE className="flag-icon" />;
+    case "DK":
+      return <DK className="flag-icon" />;
+    case "US":
+      return <US className="flag-icon" />;
+    case "AU":
+      return <AU className="flag-icon" />;
+    case "CH":
+      return <CH className="flag-icon" />;
+    case "ES":
+      return <ES className="flag-icon" />;
+    case "BE":
+      return <BE className="flag-icon" />;
+    case "NO":
+      return <NO className="flag-icon" />;
+    case "NL":
+      return <NL className="flag-icon" />;
+    case "LT":
+      return <LT className="flag-icon" />;
+    case "AQ":
+      return <AQ className="flag-icon" />;
+    default:
+      return null;
+  }
+};
 
 export default function Appearances() {
-  const appearances = [
-    {
-      event: "SWETUGG",
-      location: "Stockholm, Sweden",
-      date: "February 7-8, 2019",
-      talk: "Building for Alexa with Web API",
-    },
-    {
-      event: "VISUAL STUDIO LIVE",
-      location: "Las Vegas, Nevada",
-      date: "March 3-8, 2019",
-      talk: "The Visible Developer: Why You Shouldn't Blend In & Google vs Alexa: Battle of the Bots",
-    },
-    {
-      event: "NDC COPENHAGEN",
-      location: "Copenhagen, Denmark",
-      date: "March 27-29, 2019",
-      talk: "Real World Guide to Web API on Azure",
-    },
-    {
-      event: "KCDC",
-      location: "Kansas City, Missouri, USA",
-      date: "July 17-19, 2019",
-      talk: "Demystifying User Management for Voice Apps",
-    },
-    {
-      event: "NDC SYDNEY",
-      location: "Sydney, Australia",
-      date: "October 14-18, 2019",
-      talk: "TBD",
-    },
-  ];
-
   return (
-    <div className="appearances">
-      <div className="hero">
-      <Image
-          src={heroImage}
-          alt="Hero image"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="50% 20%"
-        />
-        <div className="hero-content">
-          <h1>Upcoming Appearances</h1>
-        </div>
-      </div>
+    <main>
+      <Navigation />
 
-      {appearances.map((appearance, index) => (
-        <div key={index} className="appearance-item">
-          <h2>{appearance.event}</h2>
-          <p>{appearance.location}</p>
-          <p>{appearance.date}</p>
-          <p>Talk: {appearance.talk}</p>
-        </div>
-      ))}
-    </div>
+      <Hero
+        heroImage={heroImage}
+        heading="Upcoming Appearances"
+        subHeading="Conferences & Events"
+      />
+
+      <Section>
+        <Grid grow>
+          {appearances.map((appearance: Appearance, index) => (
+            <Grid.Col key={index} span={{ base: 12, md: 6 }} style={{ display: 'flex' }}>
+              <Paper shadow="sm" p="0" style={{ height: '100%', flex: 1, overflow: "hidden" }}>
+                <div
+                  style={{
+                    position: "relative",
+                    height: "200px",
+                    width: "100%",
+                  }}
+                >
+                  <Image
+                    src={appearance.image}
+                    alt={appearance.event}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <div style={{ padding: "1rem" }}>
+                  <Title order={3} c="#34A853" mb="xs">
+                    {appearance.event}
+                  </Title>
+                  <Group gap="xs">
+                    <Text c="text" fw={500}>
+                      {appearance.location}
+                    </Text>
+                    <FlagComponent country={appearance.country} />
+                  </Group>
+                  <Text size="sm" c="dimmed" mb="sm">
+                    {appearance.date.toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                    })}
+                    {appearance.endDate &&
+                      ` - ${appearance.endDate.toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                      })}`}
+                    , {appearance.date.getFullYear()}
+                  </Text>
+                  <Text c="text">
+                    <Text span fw={500}>Talk: </Text>
+                    {appearance.talk}
+                  </Text>
+                </div>
+              </Paper>
+            </Grid.Col>
+          ))}
+        </Grid>
+      </Section>
+
+      <Footer />
+    </main>
   );
 }

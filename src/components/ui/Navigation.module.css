@@ -1,0 +1,13 @@
+.nav {
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.link {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--primary-color) !important;
+}
