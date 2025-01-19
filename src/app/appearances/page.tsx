@@ -5,9 +5,12 @@ import { Grid, Paper, Title, Text, Group } from "@mantine/core";
 import { Section, Navigation, Footer, Flag } from "@/components/ui";
 import Hero from "@/components/Hero";
 import heroImage from "@/public/images/heather-appearances.jpg";
-import { appearances, type Appearance } from "@/data/appearances";
+import { type Appearance } from "@/data/appearances";
+import { getAllAppearances } from "@/services/appearances";
 
 export default function Appearances() {
+  const appearances = getAllAppearances();
+
   return (
     <main>
       <Navigation />
