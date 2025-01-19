@@ -40,9 +40,9 @@ export default function Articles() {
       <Navigation />
 
       <Hero
-        heroImage={heroImage}
-        heading="Articles"
-        subHeading="Thoughts on Technology & Leadership"
+        image={heroImage}
+        title="Articles"
+        subtitle="Thoughts on Technology & Leadership"
       />
 
       <Section>

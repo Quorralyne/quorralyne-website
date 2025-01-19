@@ -58,9 +58,9 @@ export default function Media() {
       <Navigation />
 
       <Hero
-        heroImage={heroImage}
-        heading="Media"
-        subHeading="Interviews & Podcasts"
+        image={heroImage}
+        title="Media"
+        subtitle="Interviews & Podcasts"
       />
 
       <Section>

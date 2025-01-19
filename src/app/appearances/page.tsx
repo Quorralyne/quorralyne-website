@@ -45,9 +45,9 @@ export default function Appearances() {
       <Navigation />
 
       <Hero
-        heroImage={heroImage}
-        heading="Upcoming Appearances"
-        subHeading="Conferences & Events"
+        image={heroImage}
+        title="Upcoming Appearances"
+        subtitle="Conferences & Events"
       />
 
       <Section>

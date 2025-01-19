@@ -58,9 +58,9 @@ export default function Experience() {
       <Navigation />
 
       <Hero
-        heroImage={heroImage}
-        heading="Professional Experience"
-        subHeading="Building Solutions That Matter"
+        image={heroImage}
+        title="Professional Experience"
+        subtitle="Building Solutions That Matter"
       />
 
       <Section>

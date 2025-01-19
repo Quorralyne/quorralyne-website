@@ -36,9 +36,9 @@ export default function Contact() {
       <Navigation />
 
       <Hero
-        heroImage={heroImage}
-        heading="Contact Heather"
-        subHeading="Let's Connect"
+        image={heroImage}
+        title="Contact Heather"
+        subtitle="Let's Connect"
       />
 
       <Section>

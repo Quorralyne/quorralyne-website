@@ -13,9 +13,9 @@ export default function Presentations() {
       <Navigation />
 
       <Hero
-        heroImage={heroImage}
-        heading="Presentations"
-        subHeading="Speaking Engagements & Workshops"
+        image={heroImage}
+        title="Presentations"
+        subtitle="Speaking Engagements & Workshops"
       />
 
       <Section>

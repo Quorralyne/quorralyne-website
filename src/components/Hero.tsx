@@ -1,18 +1,18 @@
 import Image, { StaticImageData } from "next/image";
 
 export default function Hero({
-  heroImage,
-  heading,
-  subHeading = "",
+  image,
+  title,
+  subtitle = "",
 }: {
-  heroImage: StaticImageData;
-  heading: string;
-  subHeading?: string;
+  image: StaticImageData;
+  title: string;
+  subtitle?: string;
 }) {
   return (
     <div className="hero">
       <Image
-        src={heroImage}
+        src={image}
         alt="Heather Downing"
         fill
         style={{
@@ -22,8 +22,8 @@ export default function Hero({
         priority
       />
       <div className="content">
-        <h1>{heading}</h1>
-        <h2>{subHeading}</h2>
+        <h1>{title}</h1>
+        <h2>{subtitle}</h2>
       </div>
     </div>
   );

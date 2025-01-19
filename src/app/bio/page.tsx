@@ -10,9 +10,9 @@ export default function Bio() {
       <Navigation />
 
       <Hero
-        heroImage={heroImage}
-        heading="About Heather Downing"
-        subHeading="Software Developer & Speaker"
+        image={heroImage}
+        title="About Heather Downing"
+        subtitle="Software Developer & Speaker"
       />
 
       <Section title="Professional Background">

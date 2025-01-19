@@ -21,9 +21,9 @@ export default function Home() {
       <Navigation />
 
       <Hero
-        heroImage={heroImage}
-        heading="Heather Downing"
-        subHeading="Staying Curious"
+        image={heroImage}
+        title="Heather Downing"
+        subtitle="Senior software developer and international speaker specializing in backend microservices, voice app development, and mobile cross-platform apps."
       />
 
       <Section title="Skills">
