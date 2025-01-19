@@ -1,39 +1,15 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Grid, Paper, Title, Text, Anchor } from "@mantine/core";
 import { Section, Navigation, Footer } from "@/components/ui";
 import Hero from "@/components/Hero";
 import heroImage from "@/public/images/heather-articles.jpg";
-import codingMotivation from "@/public/images/articles/coding-motivation.png";
-import impressiveInTech from "@/public/images/articles/impressive-in-tech.png";
-
-interface Article {
-  title: string;
-  excerpt: string;
-  date: Date;
-  link: string;
-  image: StaticImageData;
-}
+import { type Article } from "@/data/articles";
+import { getArticles } from "@/services/articles";
 
 export default function Articles() {
-  const articles: Article[] = [
-    {
-      title: "The truth of coding motivation",
-      excerpt:
-        "Years ago, a programmer's life was very different. Someone in the STEM field is considered quite smart. In many circles...",
-      date: new Date("2025-02-07"),
-      link: "https://medium.com/@quorralyne/the-truth-of-coding-motivation-377cd6c4be2f",
-      image: codingMotivation,
-    },
-    {
-      title: "Are you impressive in technology?",
-      excerpt: `When you hear the word "impressive" used as a descriptor for someone in the tech industry, what is the bar that you set for that...`,
-      date: new Date("2025-02-07"),
-      link: "https://medium.com/@quorralyne/are-you-impressive-in-technology-70008fcb02fe",
-      image: impressiveInTech,
-    },
-  ];
+  const articles = getArticles();
 
   return (
     <main>
