@@ -14,9 +14,12 @@ export default function Hero({
       <Image
         src={heroImage}
         alt="Heather Downing"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="45% 30%"
+        fill
+        style={{
+          objectFit: "cover",
+          objectPosition: "45% 30%"
+        }}
+        priority
       />
       <div className="content">
         <h1>{heading}</h1>
