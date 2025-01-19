@@ -31,7 +31,9 @@ export function Section({
       py={padding[size]}
       className={styles.section}
       style={{
-        backgroundColor: highlight ? theme.colors.backgroundHighlight : theme.colors.background,
+        backgroundColor: highlight 
+          ? 'rgb(var(--background-highlight-rgb))'
+          : 'rgb(var(--background-rgb))',
         textAlign: centered ? 'center' : 'left',
       }}
     >
@@ -41,7 +43,7 @@ export function Section({
             {title && (
               <Title
                 order={1}
-                c={theme.colors.primary}
+                c="#34A853"
                 className={styles.title}
                 mb={subtitle ? '0' : 'md'}
               >
@@ -49,12 +51,7 @@ export function Section({
               </Title>
             )}
             {subtitle && (
-              <Text
-                size="lg"
-                c={theme.colors.text}
-                className={styles.subtitle}
-                mb="md"
-              >
+              <Text c="dimmed" size="xl" mb="lg">
                 {subtitle}
               </Text>
             )}

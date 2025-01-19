@@ -13,6 +13,7 @@
 
   --foreground-rgb: 16, 16, 16;
   --background-rgb: 255, 255, 255;
+  --background-highlight-rgb: 240, 240, 240;
 
   --primary-color: #2a764d;
   --secondary-color: #cbffde;
@@ -32,7 +33,10 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-rgb: 0, 0, 0;
+    --background-rgb: 51, 51, 51;
+    --background-highlight-rgb: 64, 64, 64;
+    --card-background: #404040;
+    --content-background: #383838;
 
     --primary-color: #248360;
     --secondary-color: #1a2622;
@@ -55,9 +59,15 @@
   }
 }
 
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
 header {
   background: var(--primary-color);
   color: rgb(var(--background-rgb));
+  border-bottom: 1px solid rgba(var(--foreground-rgb), 0.1);
   box-shadow: 0 5px 5px rgba(var(--foreground-rgb), 30%);
 }
 
@@ -66,11 +76,31 @@ main {
   background: rgb(var(--background-rgb));
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  min-height: 100vh;
   max-width: var(--max-width);
   margin: var(--space-md) auto;
   padding: 0 1rem;
   font-size: var(--body-font-size);
   line-height: 1.5;
+}
+
+section {
+  background: rgb(var(--background-rgb));
+}
+
+footer {
+  border-top: 1px solid rgba(var(--foreground-rgb), 0.1);
+  padding: var(--space-lg) 0;
+  margin-top: var(--space-xl);
+  background: rgb(var(--background-rgb));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer div {
+  display: flex;
+  gap: var(--space-md);
 }
 
 /* Typography */
@@ -96,83 +126,45 @@ a {
 }
 
 /* Header and Navigation */
-header {
-  padding: var(--space-md) 0;
-  position: relative;
+.nav-scroll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
 
-  nav {
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    padding: 0 20px;
-    color: var(--secondary-color);
+.nav-links {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  color: rgb(var(--foreground-rgb));
+}
 
-    a:hover, a.current {
-      color: rgb(var(--background-rgb));
-    }
+.nav-links a {
+  color: rgb(var(--background-rgb));
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
 
-    .nav-scroll {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-md);
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      padding: 0 var(--space-md);
-      margin: 0 10px;
-      -webkit-overflow-scrolling: touch;
-    }
+.nav-links a:hover {
+  background-color: rgba(var(--background-rgb), 0.1);
+}
 
-    .nav-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .nav-arrow {
-      position: absolute;
-      top: 40%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: rgb(var(--foreground-rgb));
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 1;
-    }
-
-    .nav-arrow-left {
-      left: 0;
-    }
-
-    .nav-arrow-right {
-      right: 0;
-    }
-
-    .nav-container.can-scroll .nav-arrow {
-      opacity: 1;
-    }
-
-    .nav-container.at-left .nav-arrow-left,
-    .nav-container.at-right .nav-arrow-right {
-      opacity: 0;
-    }
+@media (prefers-color-scheme: dark) {
+  .nav-links a {
+    color: rgb(var(--background-rgb));
+  }
+  
+  .nav-links a:hover {
+    background-color: rgba(var(--background-rgb), 0.2);
   }
 }
 
 /* Footer */
-footer {
-  margin-top: var(--space-xl);
-  padding: var(--space-lg) 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-footer div {
-  display: flex;
-  gap: var(--space-md);
-}
 
 /* Layouts */
 .grid {
@@ -341,5 +333,15 @@ footer div {
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+}
+
+.content-paper {
+  background-color: #f0f0f0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .content-paper {
+    background-color: #404040 !important;
   }
 }

@@ -1,5 +1,4 @@
 import { Box, Container, Group } from "@mantine/core";
-import { theme } from "@/theme";
 import styles from "./Navigation.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -27,7 +26,6 @@ export function Navigation() {
               key={item.href}
               href={item.href}
               className={styles.link}
-              style={{ color: theme.colors.text }}
             >
               {item.label}
             </Link>

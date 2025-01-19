@@ -1,11 +1,19 @@
 .nav {
   padding: 1rem 0;
   border-bottom: 1px solid #eee;
+  margin-bottom: 2rem;  
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav {
+    border-color: #888;
+  }
 }
 
 .link {
   text-decoration: none;
   transition: color 0.2s ease;
+  color: var(--foreground-color);
 }
 
 .link:hover {
