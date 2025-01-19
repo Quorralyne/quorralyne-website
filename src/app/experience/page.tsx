@@ -1,57 +1,14 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Paper, Title, Text, Grid } from "@mantine/core";
 import { Section, Navigation, Footer } from "@/components/ui";
 import Hero from "@/components/Hero";
 import heroImage from "@/public/images/heather-experience.jpg";
-import vmlLogo from "@/public/images/experience/vml.png";
-import oakwoodLogo from "@/public/images/experience/oakwood.png";
-import blueOceanLogo from "@/public/images/experience/blue-ocean.png";
-
-interface Experience {
-  title: string;
-  company: string;
-  period: string;
-  description: string;
-  image: StaticImageData;
-}
+import { getExperiences } from "@/services/experiences";
 
 export default function Experience() {
-  const experiences: Experience[] = [
-    {
-      title: "Director, Technology – Mobility & Innovation",
-      company: "VML",
-      period: "January 2017 – Present",
-      description:
-        "Created custom skill prototypes on the Alexa platform for numerous brands, coordinated external thought leadership opportunities, managed technology intern, aggregated voice interface development best practices.",
-      image: vmlLogo,
-    },
-    {
-      title: "Senior Development Engineer – Mobile",
-      company: "VML",
-      period: "March 2016 – Present",
-      description:
-        "Full stack developer currently working on developing the Quick Trip mobile application. Focus on Web API services and native mobile implementation.",
-      image: vmlLogo,
-    },
-    {
-      title: "Senior Solutions Consultant",
-      company: "Oakwood Systems Group",
-      period: "January 2015 – February 2016",
-      description:
-        "Architected and delivered inventory workflow mobile application using Xamarin. Created various .Net web applications utilizing MVC, Entity Framework, Angular and Web API.",
-      image: oakwoodLogo,
-    },
-    {
-      title: "Senior Software Engineer",
-      company: "Blue Ocean Consulting",
-      period: "August 2014 – January 2015",
-      description:
-        "Responsible for native mobile architecture by leveraging Xamarin for cross-platform mobile development. Handled enhancements to existing applications using .Net, AngularJS, MVC and WebAPI.",
-      image: blueOceanLogo,
-    },
-  ];
+  const experiences = getExperiences();
 
   return (
     <main>

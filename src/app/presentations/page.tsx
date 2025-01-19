@@ -5,9 +5,11 @@ import { Grid, Paper, Title, Text, List } from "@mantine/core";
 import { Section, Navigation, Footer } from "@/components/ui";
 import Hero from "@/components/Hero";
 import heroImage from "@/public/images/heather-presentations.jpg";
-import { presentations, type Presentation } from "@/data/presentations";
+import { getPresentations } from "@/services/presentations";
 
 export default function Presentations() {
+  const presentations = getPresentations();
+
   return (
     <main>
       <Navigation />
@@ -20,9 +22,17 @@ export default function Presentations() {
 
       <Section>
         <Grid grow>
-          {presentations.map((presentation: Presentation, index) => (
-            <Grid.Col key={index} span={{ base: 12, md: 6 }} style={{ display: 'flex' }}>
-              <Paper shadow="sm" p="0" style={{ height: '100%', flex: 1, overflow: "hidden" }}>
+          {presentations.map((presentation, index) => (
+            <Grid.Col
+              key={index}
+              span={{ base: 12, md: 6 }}
+              style={{ display: "flex" }}
+            >
+              <Paper
+                shadow="sm"
+                p="0"
+                style={{ height: "100%", flex: 1, overflow: "hidden" }}
+              >
                 <div
                   style={{
                     position: "relative",

@@ -1,57 +1,14 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Grid, Paper, Title, Text } from "@mantine/core";
 import { Section, Navigation, Footer } from "@/components/ui";
 import Hero from "@/components/Hero";
 import heroImage from "@/public/images/heather-media.jpg";
-import dotNetRocks from "@/public/images/media/dot-net-rocks.jpg";
-import developerOnFire from "@/public/images/media/developer-on-fire.png";
-import itCareerEnergizer from "@/public/images/media/it-career-energizer.jpg";
-import buildStuff from "@/public/images/media/buildstuff.jpg";
-import devoxxBelgium from "@/public/images/media/devoxx.jpg";
-
-interface MediaAppearance {
-  title: string;
-  description: string;
-  episode: string;
-  image: StaticImageData;
-}
+import { getMediaAppearances } from "@/services/media";
 
 export default function Media() {
-  const mediaAppearances: MediaAppearance[] = [
-    {
-      title: ".Net Rocks!",
-      description: "Podcast Interview (2018)",
-      episode: "Episode 1596: Voice UI with Heather Downing",
-      image: dotNetRocks,
-    },
-    {
-      title: "Developer On Fire",
-      description: "Podcast Interview (2018)",
-      episode: "Episode 284: Heather Downing - Positive Leadership",
-      image: developerOnFire,
-    },
-    {
-      title: "IT Career Energizer",
-      description: "Podcast Interview (2018)",
-      episode: "Episode 33 – Pride Comes Before A Fall with Heather Downing",
-      image: itCareerEnergizer,
-    },
-    {
-      title: "BuildStuff",
-      description: "Conference Interview (2018)",
-      episode:
-        "Interviewed on team practices and what makes mobile exciting for developers.",
-      image: buildStuff,
-    },
-    {
-      title: "DEVOXX Belgium",
-      description: "Conference Interview (2018)",
-      episode: "Interviewed about developer confidence and learning issues.",
-      image: devoxxBelgium,
-    },
-  ];
+  const mediaAppearances = getMediaAppearances();
 
   return (
     <main>
