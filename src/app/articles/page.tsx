@@ -30,7 +30,7 @@ export default function Articles() {
       title: "Are you impressive in technology?",
       excerpt: `When you hear the word "impressive" used as a descriptor for someone in the tech industry, what is the bar that you set for that...`,
       date: new Date("2025-02-07"),
-      link: "https://medium.com/@quorralyne/are-you-impressive-in-technology-a98adcf93edc",
+      link: "https://medium.com/@quorralyne/are-you-impressive-in-technology-70008fcb02fe",
       image: impressiveInTech,
     },
   ];
