@@ -2,42 +2,10 @@
 
 import Image from "next/image";
 import { Grid, Paper, Title, Text, Group } from "@mantine/core";
-import { Section, Navigation, Footer } from "@/components/ui";
+import { Section, Navigation, Footer, Flag } from "@/components/ui";
 import Hero from "@/components/Hero";
 import heroImage from "@/public/images/heather-appearances.jpg";
 import { appearances, type Appearance } from "@/data/appearances";
-import { GB, SE, DK, US, AU, CH, ES, BE, NO, NL, LT, AQ } from "country-flag-icons/react/3x2";
-
-const FlagComponent = ({ country }: { country: string }) => {
-  switch (country) {
-    case "GB":
-      return <GB className="flag-icon" />;
-    case "SE":
-      return <SE className="flag-icon" />;
-    case "DK":
-      return <DK className="flag-icon" />;
-    case "US":
-      return <US className="flag-icon" />;
-    case "AU":
-      return <AU className="flag-icon" />;
-    case "CH":
-      return <CH className="flag-icon" />;
-    case "ES":
-      return <ES className="flag-icon" />;
-    case "BE":
-      return <BE className="flag-icon" />;
-    case "NO":
-      return <NO className="flag-icon" />;
-    case "NL":
-      return <NL className="flag-icon" />;
-    case "LT":
-      return <LT className="flag-icon" />;
-    case "AQ":
-      return <AQ className="flag-icon" />;
-    default:
-      return null;
-  }
-};
 
 export default function Appearances() {
   return (
@@ -77,7 +45,7 @@ export default function Appearances() {
                     <Text c="text" fw={500}>
                       {appearance.location}
                     </Text>
-                    <FlagComponent country={appearance.country} />
+                    <Flag country={appearance.country} />
                   </Group>
                   <Text size="sm" c="dimmed" mb="sm">
                     {appearance.date.toLocaleDateString("en-US", {

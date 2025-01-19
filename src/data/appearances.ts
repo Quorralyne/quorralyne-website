@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import * as flags from "country-flag-icons/react/3x2";
 
 import swetugg from "@/public/images/appearances/swetugg.png";
 import jfokus from "@/public/images/appearances/jfokus-2019.png";
@@ -22,7 +23,7 @@ import antarcticonf from "@/public/images/appearances/placeholder.png";
 export interface Appearance {
   event: string;
   location: string;
-  country: string;
+  country: keyof typeof flags;
   date: Date;
   endDate?: Date;
   talk: string;
