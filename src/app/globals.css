@@ -257,7 +257,13 @@ footer div {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.5) 20%,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 0) 100%
+    );
     color: white;
     padding: var(--space-md);
   }
