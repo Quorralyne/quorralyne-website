@@ -5,7 +5,6 @@ import { Grid, Paper, Title, Text, Anchor } from "@mantine/core";
 import { Section, Navigation, Footer } from "@/components/ui";
 import Hero from "@/components/Hero";
 import heroImage from "@/public/images/heather-articles.jpg";
-import { type Article } from "@/data/articles";
 import { getArticles } from "@/services/articles";
 
 export default function Articles() {
