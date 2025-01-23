@@ -1,22 +1,50 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { TextInput, Textarea, Button, Stack, Title } from '@mantine/core'
+import { useState } from "react";
+import { TextInput, Textarea, Button, Stack, Title, Text } from "@mantine/core";
 
 export default function ContactForm() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success?: boolean;
+    error?: string;
+  }>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    // TODO: Implement form submission logic
-    console.log('Form submitted:', { name, email, message })
-    // Reset form fields
-    setName('')
-    setEmail('')
-    setMessage('')
-  }
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({});
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus({ success: true });
+        // Reset form fields
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        setSubmitStatus({ error: "Failed to send message. Please try again." });
+      }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      setSubmitStatus({ error: "An error occurred. Please try again later." });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -24,6 +52,16 @@ export default function ContactForm() {
         <Title order={2} c="#34A853" mb="lg">
           Send a Message
         </Title>
+        {submitStatus.success && (
+          <Text c="#34A853" fw={500} mb="md">
+            Thank you for your message! I&apos;ll get back to you soon.
+          </Text>
+        )}
+        {submitStatus.error && (
+          <Text c="red" fw={500} mb="md">
+            {submitStatus.error}
+          </Text>
+        )}
         <TextInput
           label="Name"
           placeholder="Your name"
@@ -49,19 +87,20 @@ export default function ContactForm() {
           minRows={4}
           size="md"
         />
-        <Button 
-          type="submit" 
+        <Button
+          type="submit"
           size="md"
-          style={{ 
-            backgroundColor: '#34A853',
-            '&:hover': {
-              backgroundColor: '#2d9147'
-            }
+          loading={isSubmitting}
+          style={{
+            backgroundColor: "#34A853",
+            "&:hover": {
+              backgroundColor: "#2d9147",
+            },
           }}
         >
           Send Message
         </Button>
       </Stack>
     </form>
-  )
+  );
 }
