@@ -1,6 +1,6 @@
 "use client";
 
-import { Grid, Paper, Title, Text, Anchor, Group } from '@mantine/core';
+import { Grid, Paper, Title, Text, Anchor } from '@mantine/core';
 import { Section, Navigation, Footer } from "@/components/ui";
 import Hero from "@/components/Hero";
 import ContactForm from '@/components/ContactForm';
@@ -54,22 +54,36 @@ export default function Contact() {
               <Text size="lg" mb="xl">
                 Feel free to reach out using the form, or connect with me on social media:
               </Text>
-              <Group gap="md">
+              <Grid gutter="md">
                 {socialLinks.map((link) => (
-                  <Anchor
-                    key={link.name}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <Paper shadow="sm" p="md" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <link.icon size={24} />
-                      <Text>{link.name}</Text>
-                    </Paper>
-                  </Anchor>
+                  <Grid.Col key={link.name} span={6}>
+                    <Anchor
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: 'none', width: '100%', display: 'block' }}
+                    >
+                      <Paper 
+                        shadow="sm" 
+                        p="md" 
+                        style={{ 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: '0.5rem',
+                          backgroundColor: '#ffffff',
+                          transition: 'background-color 0.2s ease',
+                          '&:hover': {
+                            backgroundColor: '#2d9147'
+                          }
+                        }}
+                      >
+                        <link.icon size={24} />
+                        <Text fw={500}>{link.name}</Text>
+                      </Paper>
+                    </Anchor>
+                  </Grid.Col>
                 ))}
-              </Group>
+              </Grid>
             </Paper>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 7 }}>

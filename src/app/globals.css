@@ -337,11 +337,11 @@ a {
 }
 
 .content-paper {
-  background-color: #f0f0f0 !important;
+  background-color: #f0f0f0;
 }
 
 @media (prefers-color-scheme: dark) {
   .content-paper {
-    background-color: #404040 !important;
+    background-color: #404040;
   }
 }
