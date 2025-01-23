@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     form.append("text", plaintextMessage);
 
     const resp = await fetch(
-      `https://api.eu.mailgun.net/v3/${process.env.MAILGUN_DOMAIN}/messages`,
+      `${process.env.MAILGUN_URL}/${process.env.MAILGUN_DOMAIN}/messages`,
       {
         method: "POST",
         headers: {
